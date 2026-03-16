@@ -61,4 +61,12 @@ export class TaskService {
   this.taksSignal.update((tasks)=> [...tasks, task]);
  }
 
+ updateTaskStatus(id: number, completed: boolean) {
+  this.taksSignal.update(tasks =>
+    tasks.map(task =>
+      task.id === id ? { ...task, completed } : task
+    )
+  );
+}
+
 }

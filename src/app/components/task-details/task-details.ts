@@ -33,4 +33,11 @@ export class TaskDetails {
       this.router.navigate(['/']);
     }
   }
+  changeStatus(status: boolean) {
+  const currentTask = this.task();
+
+  if (!currentTask) return;
+
+  this.taskService.updateTaskStatus(currentTask.id, status);
+}
 }

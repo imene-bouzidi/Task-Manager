@@ -3,9 +3,17 @@
         <div>
             <div class="header">
                 <h1>{{currentTask.title }}</h1>
-                <span class="status-badge" [class.completed]="currentTask.completed">
-                    {{ currentTask.completed ? 'Completed' : 'Active'}}
-                </span>
+                <button class="status-badge dropdown-toggle" [class.completed]="currentTask.completed" type="button" data-bs-toggle="dropdown" >
+                     {{ currentTask.completed ? 'Completed' : 'Active' }}
+                </button>
+                <ul class="dropdown-menu">
+                 <li>
+                   <button class="dropdown-item" (click)="changeStatus(true)">Completed</button>
+                 </li>
+                 <li>
+                   <button class="dropdown-item" (click)="changeStatus(false)">Active</button>
+                 </li>
+                </ul>
             </div>
 
             <div class="task-details">
@@ -18,7 +26,6 @@
                     <strong>Created:</strong>
                     <p>{{ currentTask.createdAt}}</p>
                 </div>
-
                 <div class="details-row">
                     <strong>Status:</strong>
                     <p>{{ currentTask.completed ? 'Completed' : 'In Progress'}}</p>
